@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .btn-group(role='group')
+      button.remote-action.btn.btn-default(type='button', data-device='logitech_stereo', data-command='KEY_POWER')
+        span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;Stereo
+      |   
+      button.remote-action.btn.btn-default(type='button', data-device='projector', data-command='KEY_POWER') 
+        span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;Projector
+
+  div#div1
