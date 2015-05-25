@@ -6,9 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var sys = require('sys')
 var exec = require('child_process').exec;
-
-var routes = require('./routes/index');
-
 var app = express();
 
 // view engine setup
@@ -23,7 +20,48 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+/* GET home page. */
+app.get('/', function(req, res, next) {
+  res.render('index', { title: 'Express' });
+});
+
+// define GET request for /send/deviceName/buttonName
+app.get('/send/:device/:key', function(req, res) {
+
+  var deviceName = req.param("device");
+  var key = req.param("key").toUpperCase();
+
+  // Make sure that the user has requested a valid device 
+  if(!devices.hasOwnProperty(deviceName)) {
+    res.send("invalid device");
+    return;
+  }
+
+  // Make sure that the user has requested a valid key/button
+  var device = devices[deviceName];
+  var deviceKeyFound = false;
+  for(var i = 0; i < device.length; i++) {
+    if(device[i] === key) {
+      deviceKeyFound = true; 
+      break;
+    }
+  }
+  if(!deviceKeyFound) {
+    res.send("invalid key number: "+key);
+    return;
+  }
+
+  // send command to irsend
+  var command = "irsend SEND_ONCE "+deviceName+" "+key;
+  exec(command, function(error, stdout, stderr){
+    if(error)
+      res.send("Error sending command");
+    else   
+      res.send("Successfully sent command");
+  });
+
+
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
