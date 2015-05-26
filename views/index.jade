@@ -3,17 +3,8 @@ extends layout
 block content
   div.row
     div.col-sm-12
-      .btn-group.btn-group-justified(role='group')
-          a.remote-action.btn.btn-success.btn-lg(type='button', data-device='logitech_stereo', data-command='KEY_POWER')
-            span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;Stereo
-          |   
-          a.remote-action.btn.btn-success.btn-lg(type='button', data-device='projector', data-command='KEY_POWER') 
-            span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;Projector
-
-  div.row.top-buffer
-    div.col-sm-12
-      a.full.remote-action.btn.btn-danger.btn-lg(type='button', data-device='system', data-command='off') 
-        span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;System Off
+      a.full.remote-action.btn.btn-success.btn-lg(type='button', data-device='system', data-command='off') 
+        span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;Projector
 
   div.row.xtop-buffer
     div.col-sm-12

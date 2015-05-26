@@ -29,7 +29,7 @@ app.get('/', function(req, res, next) {
 app.get('/send/system/off', function(req, res) {
   console.log('whaaaaat');
 
-  var command = "irsend SEND_ONCE logitech_stereo KEY_POWER";
+  var command = "irsend SEND_ONCE projector KEY_POWER";
   exec(command, function(error, stdout, stderr){
     if(error)
       res.send("Error sending command");
@@ -39,13 +39,7 @@ app.get('/send/system/off', function(req, res) {
         if(error)
           res.send("Error sending command");
         else   
-          var command = "irsend SEND_ONCE projector KEY_POWER";
-          exec(command, function(error, stdout, stderr){
-            if(error)
-              res.send("Error sending command");
-            else   
-              res.send("Command sent successfully");
-          });
+          res.send("Command sent successfully");
       });
   });
 
