@@ -1,11 +1,40 @@
 extends layout
 
 block content
-  .btn-group.btn-group-justified(role='group')
-      a.remote-action.btn.btn-default(type='button', data-device='logitech_stereo', data-command='KEY_POWER')
-        span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;Stereo
-      |   
-      a.remote-action.btn.btn-default(type='button', data-device='projector', data-command='KEY_POWER') 
-        span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;Projector
+  div.row
+    div.col-sm-12
+      .btn-group.btn-group-justified(role='group')
+          a.remote-action.btn.btn-success.btn-lg(type='button', data-device='logitech_stereo', data-command='KEY_POWER')
+            span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;Stereo
+          |   
+          a.remote-action.btn.btn-success.btn-lg(type='button', data-device='projector', data-command='KEY_POWER') 
+            span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;Projector
 
-  div#div1
+  div.row.top-buffer
+    div.col-sm-12
+      a.full.remote-action.btn.btn-danger.btn-lg(type='button', data-device='system', data-command='off') 
+        span.glyphicon.glyphicon-off(aria-hidden='true') &nbsp;System Off
+
+  div.row.xtop-buffer
+    div.col-sm-12
+      .btn-group.btn-group-justified(role='group')
+          a.remote-action.btn.btn-warning.btn-lg(type='button', data-device='logitech_stereo', data-command='KEY_VOLUMEDOWN')
+            span.glyphicon.glyphicon-volume-down(aria-hidden='true') &nbsp;Vol
+          |   
+          a.remote-action.btn.btn-warning.btn-lg(type='button', data-device='logitech_stereo', data-command='KEY_VOLUMEUP') 
+            span.glyphicon.glyphicon-volume-up(aria-hidden='true') &nbsp;Vol
+
+  div.row.top-buffer
+    div.col-sm-12
+      a.full.remote-action.btn.btn-danger.btn-lg(type='button', data-device='logitech_stereo', data-command='KEY_MUTE') 
+        span.glyphicon.glyphicon-volume-off(aria-hidden='true') &nbsp;Mute
+
+  div.row.xtop-buffer
+    div.col-sm-12
+      .btn-group.btn-group-justified(role='group')
+          a.remote-action.btn.btn-info.btn-lg(type='button', data-device='projector', data-command='KEY_1') HDMI 1
+          |   
+          a.remote-action.btn.btn-info.btn-lg(type='button', data-device='projector', data-command='KEY_2') HDMI 2
+
+  //span.glyphicon.glyphicon-info-sign.fixed-bottom
+  //div#div1

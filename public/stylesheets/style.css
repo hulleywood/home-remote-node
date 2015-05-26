@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+
+a.full {
+  width: 100%;
+}
+
+.top-buffer { margin-top:20px; }
+
+.xtop-buffer { margin-top:80px; }
+
+.fixed-bottom {
+  position:fixed;
+  top:0;
+  right:0;
+}

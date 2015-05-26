@@ -26,10 +26,37 @@ app.get('/', function(req, res, next) {
 });
 
 // define GET request for /send/deviceName/buttonName
-app.get('/send/:device/:key', function(req, res) {
+app.get('/send/system/off', function(req, res) {
+  console.log('whaaaaat');
 
-  var deviceName = req.param("device");
-  var key = req.param("key").toUpperCase();
+  var command = "irsend SEND_ONCE logitech_stereo KEY_POWER";
+  exec(command, function(error, stdout, stderr){
+    if(error)
+      res.send("Error sending command");
+    else   
+      var command = "irsend SEND_ONCE projector KEY_POWER";
+      exec(command, function(error, stdout, stderr){
+        if(error)
+          res.send("Error sending command");
+        else   
+          var command = "irsend SEND_ONCE projector KEY_POWER";
+          exec(command, function(error, stdout, stderr){
+            if(error)
+              res.send("Error sending command");
+            else   
+              res.send("Command sent successfully");
+          });
+      });
+  });
+
+});
+
+// define GET request for /send/deviceName/buttonName
+app.get('/send/:device/:key', function(req, res) {
+  console.log('huhhhhh');
+
+  var deviceName = req.params["device"];
+  var key = req.params["key"].toUpperCase();
 
   // Make sure that the user has requested a valid device 
   if(!devices.hasOwnProperty(deviceName)) {
@@ -59,7 +86,6 @@ app.get('/send/:device/:key', function(req, res) {
     else   
       res.send("Successfully sent command");
   });
-
 
 });
 
