@@ -20,14 +20,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+/* GET monitor. */
+app.get('/monitor', function(req, res, next) {
+  res.sendStatus(200);
+});
+
 /* GET home page. */
-app.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+app.get('/', function(req, res) {
+  res.render('index', { });
 });
 
 // define GET request for /send/deviceName/buttonName
 app.get('/send/system/off', function(req, res) {
-  console.log('whaaaaat');
 
   var command = "irsend SEND_ONCE projector KEY_POWER";
   exec(command, function(error, stdout, stderr){
@@ -47,7 +51,6 @@ app.get('/send/system/off', function(req, res) {
 
 // define GET request for /send/deviceName/buttonName
 app.get('/send/:device/:key', function(req, res) {
-  console.log('huhhhhh');
 
   var deviceName = req.params["device"];
   var key = req.params["key"].toUpperCase();
