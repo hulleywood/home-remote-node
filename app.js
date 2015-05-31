@@ -20,9 +20,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/* GET monitor. */
-app.get('/monitor', function(req, res, next) {
+/* GET living room monitor. */
+app.get('/living_room/monitor', function(req, res, next) {
   res.sendStatus(200);
+});
+
+/* GET bed room monitor. */
+app.get('/bed_room/monitor', function(req, res, next) {
+  res.sendStatus(400);
 });
 
 /* GET home page. */
